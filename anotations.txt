@@ -1,0 +1,10 @@
+Projeto:
+A ideia desse projeto é simular o board de uma retrospectiva seguindo as seguintes regras de negócio:
+    1- Deve ser possível um usuário criar uma nova sala
+    2- Deve ser possível iniciar uma sala ainda não finalizada e ainda não iniciada se for o dono da sala
+    3- Deve ser possível entrar em uma sala ainda não finalizada
+    4- Deve ser possível sair de uma sala ainda não finalizada
+    5- Deve ser possível criar um ponto positivo ou negativo para uma sala já iniciada porém ainda não finalizada
+    6- Deve ser possível dar like em um ponto de uma sala já inciada mas ainda não finalizada
+    7- Deve ser possível retirar o like de um ponto de uma sala já iniciada mas ainda não finalizada
+    8- Deve ser possível finaalizar uma sala já iniciada mas ainda não finalizada caso seja o dono da sala
