@@ -1,0 +1,3 @@
+# sending test request
+GET http://localhost:8000
+

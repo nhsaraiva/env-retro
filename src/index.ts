@@ -1,1 +1,3 @@
-console.log('opa!')
+import app from './routes';
+
+app.listen(8000);
