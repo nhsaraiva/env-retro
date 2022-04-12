@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:root@localhost:3306/envretro"
+}
+
+model Room {
+  id String @id @default(uuid())
+  number Int
+  title String
+  configurations String
+  created_at DateTime
+  started_at DateTime
+  finished_at DateTime
+}

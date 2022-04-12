@@ -1,3 +1,3 @@
-import app from './routes';
+import app from './shared/http/routes';
 
 app.listen(8000);
