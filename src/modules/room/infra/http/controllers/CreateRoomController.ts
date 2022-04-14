@@ -4,11 +4,11 @@ import RoomRepository from "../../prisma/repositories/RoomRepository";
 
 class CreateRoomControler {
     public async execute(request: Request, response: Response): Promise<Response> {
-        const userName = request.body.user_name;
+        const { player_name, title, configurations } = request.body;
         
         const createRoomServide = new CreateRoomService(new RoomRepository());
 
-        const room = createRoomServide.execute({userName});
+        const room = await createRoomServide.execute({title, configurations});
 
         return response.json(room);
     }

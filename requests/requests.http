@@ -1,3 +1,23 @@
 # sending test request
 GET http://localhost:8000
 
+###
+
+#creating room with username
+POST http://localhost:8000/room/create
+content-type: application/json
+
+{
+    "title": "title teste",
+    "player_name": "first owner"
+}
+
+###
+
+#creating room without username
+POST http://localhost:8000/room/create
+content-type: application/json
+
+{
+    "title": "title teste"
+}

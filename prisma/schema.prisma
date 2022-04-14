@@ -11,11 +11,45 @@ datasource db {
 }
 
 model Room {
-  id String @id @default(uuid())
-  number Int
-  title String
+  id             String    @id @default(uuid())
+  number         Int       @default(autoincrement())
+  title          String
   configurations String
-  created_at DateTime
-  started_at DateTime
-  finished_at DateTime
+  created_at     DateTime
+  started_at     DateTime?
+  finished_at    DateTime?
+  players        Player[]
+  points         Point[]
+
+  @@index([number])
+}
+
+model Player {
+  id           String     @id @default(uuid())
+  name         String
+  is_anonymous Boolean
+  is_owner     Boolean
+  room_id      String
+  room         Room       @relation(fields: [room_id], references: [id])
+  points       Point[]
+  favorites    Favorite[]
+}
+
+model Point {
+  id          String     @id @default(uuid())
+  description String
+  is_positive Boolean
+  player_id   String
+  player      Player     @relation(fields: [player_id], references: [id])
+  room_id     String
+  room        Room       @relation(fields: [room_id], references: [id])
+  favorites   Favorite[]
+}
+
+model Favorite {
+  id        String @id @default(uuid())
+  player_id String
+  player    Player @relation(fields: [player_id], references: [id])
+  point_id  String
+  point     Point  @relation(fields: [point_id], references: [id])
 }

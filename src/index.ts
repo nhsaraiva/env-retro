@@ -1,3 +1,12 @@
-import app from './shared/http/routes';
+import express from 'express';
+import routes from './shared/http/routes';
 
-app.listen(8000);
+const app = express();
+
+app.use(express.json());
+
+app.use(routes);
+
+app.listen('8000', () => {
+    console.log('Server started');
+});

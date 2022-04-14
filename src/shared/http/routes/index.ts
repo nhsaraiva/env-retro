@@ -1,9 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
 
-const app = express();
+import roomRoutes from '../../../modules/room/infra/http/routes/room.routes';
 
-app.get("/", (req, res) => {
-    return res.json({test:true});
-});
+const routes = Router();
 
-export default app;
+routes.use('/room', roomRoutes);
+
+export default routes;

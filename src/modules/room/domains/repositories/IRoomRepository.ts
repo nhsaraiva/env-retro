@@ -1,8 +1,8 @@
-import ICreateRoomByUser from "../entities/ICreateRoomByUser";
+import ICreateRoom from "../entities/ICreateRoom";
 import IRoom from "../entities/IRoom";
 
 interface IRoomRepository {
-    store({ userName }: ICreateRoomByUser): Promise<IRoom>;
+    store({title, configurations}: ICreateRoom): Promise<IRoom>;
 }
 
 export default IRoomRepository;
