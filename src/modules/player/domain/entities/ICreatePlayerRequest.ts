@@ -1,7 +1,7 @@
 interface ICreatePlayerRequest {
-    name?: String,
-    is_owner?: Boolean;
-    room_id: String
+    name?: string,
+    is_owner?: boolean;
+    room_id: string
 }
 
 export default ICreatePlayerRequest;

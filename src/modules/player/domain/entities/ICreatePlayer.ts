@@ -1,8 +1,8 @@
 interface ICreatePlayer {
-    name: String;
-    is_anonymous: Boolean,
-    is_owner: Boolean,
-    room_id: String
+    name: string;
+    is_anonymous: boolean,
+    is_owner: boolean,
+    room_id: string
 }
 
 export default ICreatePlayer;

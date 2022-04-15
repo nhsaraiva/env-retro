@@ -7,7 +7,7 @@ class RoomRepository implements IRoomRepository {
     async store({title, configurations}: ICreateRoom): Promise<IRoom> {
         const prisma  = new PrismaClient();
 
-        let roomToCreate: Prisma.RoomCreateInput = {
+        const roomToCreate: Prisma.RoomCreateInput = {
             title,
             configurations: configurations || "{}",
             created_at: new Date()
