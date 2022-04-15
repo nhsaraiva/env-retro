@@ -1,6 +1,3 @@
-import ICreateRoom from '../../domains/entities/ICreateRoom';
-import IRoom from '../../domains/entities/IRoom';
-import IRoomRepository from '../../domains/repositories/IRoomRepository';
 import FakeRoomRepository from '../../infra/fake/repositories/FakeRoomRepository';
 import CreateRoomService from './CreateRoomService';
 
