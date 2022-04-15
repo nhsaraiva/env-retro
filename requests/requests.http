@@ -3,21 +3,21 @@ GET http://localhost:8000
 
 ###
 
-#creating room with username
+#creating room with player_name
 POST http://localhost:8000/room/create
 content-type: application/json
 
 {
-    "title": "title teste",
+    "title": "title teste with player",
     "player_name": "first owner"
 }
 
 ###
 
-#creating room without username
+#creating room without player_name
 POST http://localhost:8000/room/create
 content-type: application/json
 
 {
-    "title": "title teste"
+    "title": "title teste without player"
 }

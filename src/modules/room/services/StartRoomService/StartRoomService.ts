@@ -1,4 +1,6 @@
 import IPlayerRepository from "../../../player/domain/repository/IPlayerRepository";
+import IRoom from "../../domains/entities/IRoom";
+import IStartRoom from "../../domains/entities/IStartRoom";
 import IRoomRepository from "../../domains/repositories/IRoomRepository";
 
 class StartRoomService {
@@ -7,7 +9,7 @@ class StartRoomService {
         private playerRepository: IPlayerRepository
     ) { }
 
-    async execute({ room_id, player_id }: IStartRoom) {
+    async execute({ room_id, player_id }: IStartRoom): Promise<IRoom> {
         const room = await this.roomRepository.findRoomById(room_id);
 
         if (!room) {
@@ -33,7 +35,7 @@ class StartRoomService {
             throw new Error('Player is not owner to this room');
         }
 
-        this.roomRepository.startRoom(room_id);
+        return this.roomRepository.startRoom(room_id);
     }
 }
 
