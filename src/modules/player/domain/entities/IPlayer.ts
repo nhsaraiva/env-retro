@@ -1,9 +1,9 @@
 interface IPlayer {
-    id: String;
-    name: String;
-    is_anonymous: Boolean,
-    is_owner: Boolean,
-    room_id: String
+    id: string;
+    name: string;
+    is_anonymous: boolean,
+    is_owner: boolean,
+    room_id: string
 }
 
 export default IPlayer;

@@ -4,9 +4,9 @@ import IPlayer from "../../../domain/entities/IPlayer";
 import IPlayerRepository from "../../../domain/repository/IPlayerRepository";
 
 class PlayerRepository implements IPlayerRepository {
-    async store({ name, is_anonymous, is_owner, room_id }: ICreatePlayer): Promise<IPlayer> {
-        const prisma: PrismaClient = new PrismaClient();
+    prisma: PrismaClient = new PrismaClient();
 
+    async store({ name, is_anonymous, is_owner, room_id }: ICreatePlayer): Promise<IPlayer> {
         const roomUnique: Prisma.RoomCreateNestedOneWithoutPlayersInput = {
             connect: {
                 id: room_id
@@ -20,11 +20,19 @@ class PlayerRepository implements IPlayerRepository {
             room: roomUnique
         };
 
-        const player = await prisma.player.create({
+        const player = await this.prisma.player.create({
             data: playerToCreate
         });
 
         return player;
+    }
+
+    async findPlayerById(id: string): Promise<IPlayer | null> {
+        return this.prisma.player.findUnique({
+            where: {
+                id: id
+            },
+        });
     }
 }
 
