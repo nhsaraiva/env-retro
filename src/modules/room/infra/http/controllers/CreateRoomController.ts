@@ -17,7 +17,8 @@ class CreateRoomControler {
 
         const owner = await cratePlayer.execute({
             name: player_name,
-            is_owner: true
+            is_owner: true,
+            room_id: room.id
         } as ICreatePlayerRequest);
 
         room.owner = owner;

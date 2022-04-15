@@ -19,6 +19,11 @@ describe('Testing CreatePlayerService', () => {
         const player = await createPlayerService.execute(playerRequest);
 
         expect(player.name).toBe('Anonymous');
+        expect(playerRepository.players).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                id: player.id
+            })
+        ]));
     })
 
     it('should return a player name and id if player name is defined', async () => {
@@ -35,6 +40,11 @@ describe('Testing CreatePlayerService', () => {
 
         expect(player).toHaveProperty('id');
         expect(player.name).toBe(playerName);
+        expect(playerRepository.players).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                id: player.id
+            })
+        ]));
     })
 
     it('should return is anonymous true if player name is not defined', async () => {
@@ -47,6 +57,11 @@ describe('Testing CreatePlayerService', () => {
         const player = await createPlayerService.execute(playerRequest);
 
         expect(player.is_anonymous).toBe(true);
+        expect(playerRepository.players).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                id: player.id
+            })
+        ]));
     })
 
     it('should return owner true if this value passed to this property', async () => {
@@ -60,6 +75,11 @@ describe('Testing CreatePlayerService', () => {
         const player = await createPlayerService.execute(playerRequest);
 
         expect(player.is_owner).toBe(true);
+        expect(playerRepository.players).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                id: player.id
+            })
+        ]));
 
     })
 
@@ -73,5 +93,10 @@ describe('Testing CreatePlayerService', () => {
         const player = await createPlayerService.execute(playerRequest);
 
         expect(player.is_owner).toBe(false);
+        expect(playerRepository.players).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                id: player.id
+            })
+        ]));
     })
 });

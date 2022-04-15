@@ -1,46 +1,45 @@
 import ICreateRoom from '../../domains/entities/ICreateRoom';
 import IRoom from '../../domains/entities/IRoom';
 import IRoomRepository from '../../domains/repositories/IRoomRepository';
+import FakeRoomRepository from '../../infra/fake/repositories/FakeRoomRepository';
 import CreateRoomService from './CreateRoomService';
 
-const roomRepository: jest.Mocked<IRoomRepository> = {
-    store: jest.fn()
-}
-
-const room: jest.Mocked<IRoom> = {
-    id: "00c7f3ec-f719-4997-91d1-4724085eb6fb",
-    number: 123123,
-    title: "title test",
-    configurations: "{timerInMinutes:5}",
-    created_at: new Date(),
-    started_at: new Date(),
-    finished_at: new Date(),
-}
-
-roomRepository.store.mockResolvedValue(room);
+const roomRepository: FakeRoomRepository = new FakeRoomRepository();
 
 describe('Testing CreateRoomService', () => {
-    it('should call a store on repository once time', () => {
+    it('should call a store on repository once time', async () => {
         const createRoomService = new CreateRoomService(roomRepository);
 
-        const room = createRoomService.execute({title: "teste"});
+        await createRoomService.execute({title: "teste 1"});
 
-        expect(roomRepository.store).toBeCalledTimes(1)
+        expect(roomRepository.rooms).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                title: "teste 1"
+            })
+        ]));
     });
 
-    it('should return an room if not pass only title', () => {
+    it('should return an room if not pass only title', async () => {
         const createRoomService = new CreateRoomService(roomRepository);
 
-        const room = createRoomService.execute({title: "teste"});
+        await createRoomService.execute({title: "teste 2"});
 
-        expect(room).resolves.toHaveProperty('id');
+        expect(roomRepository.rooms).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                title: "teste 2"
+            })
+        ]));
     });
 
-    it('should return an room if pass a title and configurations', () => {
+    it('should return an room if pass a title and configurations', async () => {
         const createRoomService = new CreateRoomService(roomRepository);
 
-        const room = createRoomService.execute({title: "teste", configurations: "{timerInMinutes:5}"});
+        await createRoomService.execute({title: "teste 3", configurations: "{timerInMinutes:5}"});
 
-        expect(room).resolves.toHaveProperty('id');
+        expect(roomRepository.rooms).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                title: "teste 3"
+            })
+        ]));
     });
 });

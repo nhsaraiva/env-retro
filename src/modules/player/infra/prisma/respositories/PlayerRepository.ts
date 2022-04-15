@@ -10,7 +10,7 @@ class PlayerRepository implements IPlayerRepository {
         const roomUnique: Prisma.RoomCreateNestedOneWithoutPlayersInput = {
             connect: {
                 id: room_id
-            }
+            } as Prisma.RoomCreateWithoutPlayersInput
         };
 
         const playerToCreate: Prisma.PlayerCreateInput = {
