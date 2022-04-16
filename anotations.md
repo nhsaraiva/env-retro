@@ -8,7 +8,7 @@ A ideia desse projeto é simular o board de uma retros pectiva seguindo as segui
 
 # Deve ser possível **finalizar uma sala** já **iniciada** mas ainda **não finalizada** caso seja o **dono da sala**
 
-## Deve ser possível **entrar em uma sala** ainda **não finalizada**
+# Deve ser possível **entrar em uma sala** ainda **não finalizada**
 
 ## Deve ser possível **sair de uma sala** ainda **não finalizada**
     

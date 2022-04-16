@@ -56,3 +56,12 @@ Content-Type: application/json
     "room_number": 22,
     "player_name": "player teste" 
 }
+###
+
+#EXIT ON A ROOM WHITH PLAYER NAME
+POST http://localhost:8000/player/join
+Content-Type: application/json
+
+{
+    "player_id": "db85441c-5451-497c-9552-9f4ca552a821"
+}

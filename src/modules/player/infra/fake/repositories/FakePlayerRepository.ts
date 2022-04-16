@@ -30,6 +30,18 @@ class FakePlayerRepository implements IPlayerRepository {
         return null;
     }
 
+    async delete(id: string): Promise<void> {
+        const players: IPlayer[] = [];
+        
+        this.players.forEach((player) => {
+            if(player.id != id){
+                players.push(player);
+            }
+        })
+
+        this.players = players;
+    }
+
 }
 
 export default FakePlayerRepository;
