@@ -39,6 +39,7 @@ class FakeRoomRepository implements IRoomRepository {
 
         return roomsFinded[0];   
     }
+
     async finishRoom(id: string): Promise<IRoom> {
         const roomsFinded = this.rooms.filter((room) => room.id == id);
 
@@ -46,7 +47,16 @@ class FakeRoomRepository implements IRoomRepository {
 
         return roomsFinded[0];   
     }
+    
+    async findRoomByNumber(number: number): Promise<null | IRoom> {
+        const roomsFinded = this.rooms.filter((room) => room.number == number);
 
+        if(roomsFinded.length > 0) {
+            return roomsFinded[0];
+        }
+
+        return null;
+    }
 }
 
 export default FakeRoomRepository;

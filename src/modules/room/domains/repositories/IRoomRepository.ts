@@ -6,6 +6,7 @@ interface IRoomRepository {
     findRoomById(id: string): Promise<IRoom | null>;
     startRoom(id: string): Promise<IRoom>;
     finishRoom(id: string): Promise<IRoom>;
+    findRoomByNumber(number: number): Promise<IRoom | null>;
 }
 
 export default IRoomRepository;

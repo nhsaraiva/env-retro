@@ -48,6 +48,16 @@ class RoomRepository implements IRoomRepository {
         });
     }
 
+    
+    async findRoomByNumber(number: number): Promise<null | IRoom> {
+        return prisma.room.findFirst({
+            where: {
+                number
+            }
+        });
+    }
+
+
 }
 
 export default RoomRepository;
