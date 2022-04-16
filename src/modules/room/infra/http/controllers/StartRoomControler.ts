@@ -13,7 +13,7 @@ class StartRoomControler {
 
             return response.json(room);
         } catch (error: any) {
-            return response.json({ error }).status(400);
+            return response.status(400).json({ error: error.message })
         }
     }
 }

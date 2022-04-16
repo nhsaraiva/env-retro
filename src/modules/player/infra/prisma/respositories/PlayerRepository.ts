@@ -1,4 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import prisma from "../../../../../shared/infra/prisma";
 import ICreatePlayer from "../../../domain/entities/ICreatePlayer";
 import IPlayer from "../../../domain/entities/IPlayer";
 import IPlayerRepository from "../../../domain/repository/IPlayerRepository";
@@ -20,7 +21,7 @@ class PlayerRepository implements IPlayerRepository {
             room: roomUnique
         };
 
-        const player = await this.prisma.player.create({
+        const player = await prisma.player.create({
             data: playerToCreate
         });
 
@@ -28,7 +29,7 @@ class PlayerRepository implements IPlayerRepository {
     }
 
     async findPlayerById(id: string): Promise<IPlayer | null> {
-        return this.prisma.player.findUnique({
+        return prisma.player.findUnique({
             where: {
                 id: id
             },

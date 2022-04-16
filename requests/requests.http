@@ -21,3 +21,14 @@ content-type: application/json
 {
     "title": "title teste without player"
 }
+
+###
+
+#starting an room
+POST http://localhost:8000/room/start
+Content-Type: application/json
+
+{
+    "room_id":"80ce51ed-3897-441c-8c63-9a002ba070bf",
+    "player_id":"2e667f67-e269-44b0-8c40-c68da608f086"
+}
