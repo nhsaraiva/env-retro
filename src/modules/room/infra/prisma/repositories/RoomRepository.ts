@@ -36,6 +36,17 @@ class RoomRepository implements IRoomRepository {
             }
         });
     }
+    
+    async finishRoom(id: string): Promise<IRoom> {
+        return await prisma.room.update({
+            where: {
+                id
+            },
+            data: {
+                finished_at: new Date()
+            }
+        });
+    }
 
 }
 

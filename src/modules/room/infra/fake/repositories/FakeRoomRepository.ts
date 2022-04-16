@@ -39,6 +39,13 @@ class FakeRoomRepository implements IRoomRepository {
 
         return roomsFinded[0];   
     }
+    async finishRoom(id: string): Promise<IRoom> {
+        const roomsFinded = this.rooms.filter((room) => room.id == id);
+
+        roomsFinded[0].finished_at = new Date();
+
+        return roomsFinded[0];   
+    }
 
 }
 

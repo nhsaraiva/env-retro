@@ -3,10 +3,12 @@ import CreateRoomControler from "../controllers/CreateRoomController";
 import StartRoomControler from "../controllers/StartRoomControler";
 
 import { celebrate, Joi, Segments } from 'celebrate';
+import FinishRoomControler from "../controllers/FinishRoomControler";
 
 const roomRoutes = Router();
 const createRoomController = new CreateRoomControler();
 const startRoomController = new StartRoomControler();
+const finishRoomControler = new FinishRoomControler();
 
 roomRoutes.post(
     '/create',
@@ -20,7 +22,6 @@ roomRoutes.post(
     createRoomController.execute
 );
 
-
 roomRoutes.post(
     '/start',
     celebrate({
@@ -30,6 +31,17 @@ roomRoutes.post(
         }
     }),
     startRoomController.execute
+);
+
+roomRoutes.post(
+    '/finish',
+    celebrate({
+        [Segments.BODY]: {
+            room_id: Joi.string().uuid().required(),
+            player_id: Joi.string().uuid().required(),
+        }
+    }),
+    finishRoomControler.execute
 );
 
 export default roomRoutes;

@@ -1,9 +1,4 @@
-# sending test request
-GET http://localhost:8000
-
-###
-
-#creating room with player_name
+#CREATING ROOM WITH PLAYER_NAME
 POST http://localhost:8000/room/create
 content-type: application/json
 
@@ -14,7 +9,7 @@ content-type: application/json
 
 ###
 
-#creating room without player_name
+#CREATING ROOM WITHOUT PLAYER_NAME
 POST http://localhost:8000/room/create
 content-type: application/json
 
@@ -24,11 +19,21 @@ content-type: application/json
 
 ###
 
-#starting an room
+#STARTING AN ROOM
 POST http://localhost:8000/room/start
 Content-Type: application/json
 
 {
-    "room_id":"80ce51ed-3897-441c-8c63-9a002ba070bf",
-    "player_id":"2e667f67-e269-44b0-8c40-c68da608f086"
+    "room_id":"0a26ef17-bb10-469c-b34e-de0c145e279d",
+    "player_id":"308b3a51-0acc-4542-b362-362f7a4faf57"
+}
+###
+
+#FINISH AN ROOM
+POST http://localhost:8000/room/finish
+Content-Type: application/json
+
+{
+    "room_id":"0a26ef17-bb10-469c-b34e-de0c145e279d",
+    "player_id":"308b3a51-0acc-4542-b362-362f7a4faf57"
 }
