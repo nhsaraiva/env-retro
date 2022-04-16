@@ -24,8 +24,8 @@ POST http://localhost:8000/room/start
 Content-Type: application/json
 
 {
-    "room_id":"0a26ef17-bb10-469c-b34e-de0c145e279d",
-    "player_id":"308b3a51-0acc-4542-b362-362f7a4faf57"
+    "room_id":"06c895b4-4a97-4fe2-a3f9-583299f84e4c",
+    "player_id":"bafe5c50-6d23-4a60-b2f9-9465109fc5d1"
 }
 ###
 
@@ -34,6 +34,25 @@ POST http://localhost:8000/room/finish
 Content-Type: application/json
 
 {
-    "room_id":"0a26ef17-bb10-469c-b34e-de0c145e279d",
-    "player_id":"308b3a51-0acc-4542-b362-362f7a4faf57"
+    "room_id":"06c895b4-4a97-4fe2-a3f9-583299f84e4c",
+    "player_id":"bafe5c50-6d23-4a60-b2f9-9465109fc5d1"
+}
+###
+
+#JOIN ON A ROOM
+POST http://localhost:8000/player/join
+Content-Type: application/json
+
+{
+    "room_number": 22
+}
+###
+
+#JOIN ON A ROOM WHITH PLAYER NAME
+POST http://localhost:8000/player/join
+Content-Type: application/json
+
+{
+    "room_number": 22,
+    "player_name": "player teste" 
 }
