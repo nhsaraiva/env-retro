@@ -7,7 +7,7 @@ import PointRepository from "../../prisma/repositories/PointRepository";
 class CreatePointController {
     async execute(request: Request, response: Response): Promise<Response> {
         try {
-            const { description, player_id, room_id, id_positive } = request.body;
+            const { description, player_id, room_id, is_positive } = request.body;
 
             const createPointService = new CreatePointService(
                 new PointRepository(),
@@ -18,7 +18,7 @@ class CreatePointController {
             const point = createPointService.execute({
                 description,
                 player_id,
-                id_positive,
+                is_positive,
                 room_id
             });
 

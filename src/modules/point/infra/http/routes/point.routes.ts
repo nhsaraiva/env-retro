@@ -14,7 +14,7 @@ pointRoutes.post(
     celebrate({
         [Segments.BODY]: {
             description: Joi.string().required(),
-            id_positive: Joi.bool().required(),
+            is_positive: Joi.bool().required(),
             player_id: Joi.string().uuid().required(),
             room_id: Joi.string().uuid().required(),
         }
