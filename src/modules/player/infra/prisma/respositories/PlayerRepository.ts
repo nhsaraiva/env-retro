@@ -27,7 +27,7 @@ class PlayerRepository implements IPlayerRepository {
     }
 
     async findPlayerById(id: string): Promise<IPlayer | null> {
-        return prisma.player.findUnique({
+        return await prisma.player.findUnique({
             where: {
                 id: id
             },
