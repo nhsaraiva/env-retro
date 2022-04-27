@@ -6,23 +6,22 @@ import { Prisma } from "@prisma/client";
 
 class PointRepository implements IPointRepository{    
     async store(data: ICreatePoint): Promise<IPoint> {
-        const roomUnique: Prisma.RoomCreateNestedOneWithoutPlayersInput = {
-            connect: {
-                id: room_id
-            } as Prisma.RoomCreateWithoutPlayersInput
-        };
-
-        const pointToCreate: Prisma.PointCreateInput = data;
-
         const point = await prisma.point.create({
-            data: pointToCreate
+            data: data
         });
 
         return point;
     }
 
     async update(id: string, description: string): Promise<IPoint> {
-        throw new Error("Method not implemented.");
+        return await prisma.point.update({
+            where : {
+                id
+            },
+            data: {
+                description
+            }
+        });
     }
     
     async findPointById(id: string): Promise<IPoint | null> {
